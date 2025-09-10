@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
+  --background: #010101;
   --foreground: #ededed;
 }
 
@@ -11,10 +11,10 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  /* Custom Color Palette - Purple Theme */
+  /* Custom Color Palette */
   --color-primary: #492bff;
-  --color-secondary: #6366f1;
-  --color-accent: #8b5cf6;
+  --color-secondary: rgb(236, 127, 60);
+  --color-tertiary: rgb(203, 150, 235);
   --color-success: #059669;
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
@@ -42,6 +42,27 @@
       background-position: var(--bg-size, 300%) 0;
     }
   }
+
+  @keyframes slideDown {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+
+  --animate-slideDown: slideDown 200ms ease-out;
+  --animate-slideUp: slideUp 200ms ease-out;
 }
 
 body {

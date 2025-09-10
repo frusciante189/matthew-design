@@ -14,7 +14,7 @@ const Hero = () => {
             DesignBell
           </span>
         </div>
-        <div className="flex-1 flex flex-col items-center mt-8 sm:mt-10 md:mt-12 gap-8 sm:gap-10 md:gap-12 max-w-4xl mx-auto px-4 sm:px-6 pb-8">
+        <div className="flex-1 flex flex-col items-center mt-8 gap-8 sm:gap-10 md:gap-12 max-w-4xl mx-auto px-4 sm:px-6 pb-8">
           <div className="group relative mx-auto flex items-center justify-center rounded-full px-4 py-1.5 shadow-[inset_0_-8px_10px_#8fdfff1f] transition-shadow duration-500 ease-out hover:shadow-[inset_0_-5px_10px_#8fdfff3f] ">
             <span
               className={cn(
@@ -39,7 +39,7 @@ const Hero = () => {
  duration-300 ease-in-out group-hover:translate-x-0.5"
             />
           </div>
-          <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-center leading-tight">
+          <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-center leading-none">
             Unlock Your Brand's Design Potential
           </h1>
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-center text-white/80 max-w-3xl">
