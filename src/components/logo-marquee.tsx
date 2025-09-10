@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
 import { Marquee } from "./ui/marquee";
+import Image from "next/image";
 
 const logos = [
   "/marquee/logo1.avif",
@@ -13,9 +13,11 @@ const logos = [
 const LogoCard = ({ logoSrc }: { logoSrc: string }) => {
   return (
     <div className="flex items-center justify-center h-16 w-40 mx-4">
-      <img
+      <Image
         src={logoSrc}
         alt="Company logo"
+        width={128}
+        height={48}
         className="max-h-12 max-w-32 object-contain filter invert"
       />
     </div>

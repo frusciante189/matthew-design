@@ -92,7 +92,7 @@ export default function BentoGrid() {
               Quick Turnarounds
             </h3>
             <p className="text-white/70 text-sm mb-6">
-              We'll deliver your designs one at a time with an average
+              We&apos;ll deliver your designs one at a time with an average
               turnaround as quick as 48 hours.
             </p>
             <div className="flex justify-center">

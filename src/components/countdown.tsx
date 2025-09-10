@@ -34,7 +34,7 @@ export default function Countdown({ targetDate }: Props) {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [targetDate]);
+  }, [targetDate, calculateTimeLeft]);
 
   const timeUnits = [
     { value: timeLeft.days, label: "Days" },
@@ -46,7 +46,7 @@ export default function Countdown({ targetDate }: Props) {
   return (
     <NumberFlowGroup>
       <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4">
-        {timeUnits.map((unit, index) => (
+        {timeUnits.map((unit) => (
           <div
             key={unit.label}
             className="bg-white/10 backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 min-w-[80px] sm:min-w-[100px] md:min-w-[120px] text-center border border-white/20 flex-1 max-w-[120px] sm:max-w-none sm:flex-initial"

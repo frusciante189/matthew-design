@@ -40,7 +40,7 @@ const Hero = () => {
             />
           </div>
           <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-center leading-none">
-            Unlock Your Brand's Design Potential
+            Unlock Your Brand&apos;s Design Potential
           </h1>
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-center text-white/80 max-w-3xl">
             One subscription. Unlimited designs. Secure your founding-member

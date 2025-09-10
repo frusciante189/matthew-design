@@ -28,7 +28,7 @@ const ProcessSection = () => {
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-4xl mx-auto leading-normal">
             Say farewell to conventional design process. Embrace a new design
-            process that's{" "}
+            process that&apos;s{" "}
             <span className="text-white font-semibold">
               tailored just for your kind of needs.
             </span>

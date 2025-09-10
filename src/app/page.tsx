@@ -6,28 +6,32 @@ import Waitlist from "@/components/waitlist";
 import FAQ from "@/components/faq";
 import CountdownSection from "@/components/countdown-section";
 import Footer from "@/components/footer";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="min-h-screen w-full relative">
-      <img
+      <Image
         src="/bg-gradient.avif"
         alt=""
-        className="w-full h-screen absolute top-0"
+        width={1920}
+        height={1080}
+        className="w-full h-screen absolute top-0 pointer-events-none -z-10"
+        priority
       />
       <Hero />
       <div className="min-h-screen relative w-full">
-        <img src="/g1.avif" alt="" className="absolute left-0" />
-        <img src="/g2.avif" alt="" className="absolute left-0" />
+        <Image src="/g1.avif" alt="" width={1920} height={1080} className="absolute left-0 pointer-events-none -z-10" />
+        <Image src="/g2.avif" alt="" width={1920} height={1080} className="absolute left-0 pointer-events-none -z-10" />
         <ProcessSection />
         <PricingSection />
         <div className="relative">
-          <img src="/g3.avif" alt="" className="absolute top-0 left-0" />
+          <Image src="/g3.avif" alt="" width={1920} height={1080} className="absolute top-0 left-0 pointer-events-none -z-10" />
           <BentoGrid />
         </div>
         <Waitlist />
         <div className="relative">
-          <img src="/g4.avif" alt="" className="absolute top-0 right-0" />
+          <Image src="/g4.avif" alt="" width={1920} height={1080} className="absolute top-0 right-0 pointer-events-none -z-10" />
           <FAQ />
         </div>
       </div>
