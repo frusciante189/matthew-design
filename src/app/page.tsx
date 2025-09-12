@@ -22,20 +22,44 @@ export default function Home() {
       />
       <Hero />
       <div className="min-h-screen relative w-full">
-        <Image src="/g1.avif" alt="" width={1920} height={1080} className="absolute left-0 pointer-events-none -z-10" />
-        <Image src="/g2.avif" alt="" width={1920} height={1080} className="absolute left-0 pointer-events-none -z-10" />
+        <Image
+          src="/g1.avif"
+          alt=""
+          width={1920}
+          height={1080}
+          className="absolute left-0 pointer-events-none -z-10"
+        />
+        <Image
+          src="/g2.avif"
+          alt=""
+          width={1920}
+          height={1080}
+          className="absolute left-0 pointer-events-none -z-10"
+        />
         <ProcessSection />
         <PricingSection />
         <div className="relative">
-          <Image src="/g3.avif" alt="" width={1920} height={1080} className="absolute top-0 left-0 pointer-events-none -z-10" />
+          <Image
+            src="/g3.avif"
+            alt=""
+            width={1920}
+            height={1080}
+            className="absolute top-0 left-0 pointer-events-none -z-10"
+          />
           <BentoGrid />
         </div>
         <Waitlist />
+        <FeatureComparison />
         <div className="relative">
-          <Image src="/g4.avif" alt="" width={1920} height={1080} className="absolute top-0 right-0 pointer-events-none -z-10" />
+          <Image
+            src="/g4.avif"
+            alt=""
+            width={1920}
+            height={1080}
+            className="absolute top-0 right-0 pointer-events-none -z-10"
+          />
           <FAQ />
         </div>
-        <FeatureComparison />
       </div>
       <CountdownSection />
       <Footer />
