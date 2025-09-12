@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { verifyPassword, generateAuthToken, isAuthenticated } from '@/lib/auth';
-import { redirect } from 'next/navigation';
+import { verifyPassword, generateAuthToken } from '@/lib/auth';
 
 const loginAttempts = new Map<string, { count: number; lastAttempt: number }>();
 
@@ -34,7 +33,9 @@ function recordAttempt(ip: string) {
 
 export async function POST(request: NextRequest) {
   try {
-    const ip = request.ip || 'unknown';
+    // Get IP from headers (works in production)
+    const forwarded = request.headers.get('x-forwarded-for');
+    const ip = forwarded ? forwarded.split(',')[0] : request.headers.get('x-real-ip') || 'unknown';
     
     if (isRateLimited(ip)) {
       return NextResponse.json(
