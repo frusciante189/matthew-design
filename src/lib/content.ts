@@ -99,10 +99,10 @@ export interface ContentData {
 
 export async function getContent(): Promise<ContentData> {
   try {
-    // Always use local file for now (Static Generation approach)
-    // In production, this will be built into the bundle
+    // Development: Always read fresh from file
+    // Production: Read from GitHub or cached file
     const content = JSON.parse(readFileSync(CONTENT_FILE, 'utf-8'));
-    console.log('Content loaded from static file');
+    console.log('Content loaded from file');
     return content;
   } catch (error) {
     console.error('Failed to load content from file:', error);
@@ -209,7 +209,11 @@ const GITHUB_CONFIG = {
 
 export async function updateContent(content: ContentData): Promise<{ success: boolean; error?: string; message?: string }> {
   try {
-    // Always use GitHub API for content updates
+    // Update local file first (for immediate preview)
+    writeFileSync(CONTENT_FILE, JSON.stringify(content, null, 2));
+    console.log('Content saved to local file');
+    
+    // Then update GitHub API for production
     if (!process.env.GITHUB_TOKEN) {
       return { 
         success: false, 
