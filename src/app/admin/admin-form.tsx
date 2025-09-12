@@ -27,10 +27,14 @@ export default function AdminForm({ initialContent, updateAction }: AdminFormPro
     setIsPending(false);
   };
 
-  const handleLogout = () => {
-    // Clear auth cookies and redirect
-    document.cookie = 'admin-auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    window.location.href = '/admin/login';
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/admin/logout', { method: 'POST' });
+      window.location.href = '/admin/login';
+    } catch {
+      // Fallback if fetch fails
+      window.location.href = '/admin/login';
+    }
   };
 
   const updateContent = (path: string, value: string) => {

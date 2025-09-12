@@ -78,9 +78,7 @@ export default function AdminLogin() {
           </button>
           
           {message && (
-            <p className={`text-sm mt-2 ${
-              message.includes('Too many') ? 'text-yellow-400' : 'text-red-400'
-            }`}>
+            <p className="text-sm mt-2 text-red-400">
               {message}
             </p>
           )}
