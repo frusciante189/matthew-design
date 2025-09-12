@@ -209,11 +209,13 @@ const GITHUB_CONFIG = {
 
 export async function updateContent(content: ContentData): Promise<{ success: boolean; error?: string; message?: string }> {
   try {
-    // Update local file first (for immediate preview)
-    writeFileSync(CONTENT_FILE, JSON.stringify(content, null, 2));
-    console.log('Content saved to local file');
+    // Only update local file in development
+    if (!process.env.VERCEL) {
+      writeFileSync(CONTENT_FILE, JSON.stringify(content, null, 2));
+      console.log('Content saved to local file');
+    }
     
-    // Then update GitHub API for production
+    // Always update GitHub API
     if (!process.env.GITHUB_TOKEN) {
       return { 
         success: false, 
