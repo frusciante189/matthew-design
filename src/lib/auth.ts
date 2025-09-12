@@ -4,6 +4,13 @@ import { cookies } from "next/headers";
 const JWT_SECRET = process.env.JWT_SECRET || "fallback-secret";
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
+// Debug logs for production
+if (process.env.VERCEL) {
+  console.log('Production environment variables:');
+  console.log('JWT_SECRET exists:', !!JWT_SECRET);
+  console.log('ADMIN_PASSWORD exists:', !!ADMIN_PASSWORD);
+}
+
 export async function verifyPassword(password: string): Promise<boolean> {
   return password === ADMIN_PASSWORD;
 }
@@ -34,11 +41,20 @@ export async function isAuthenticated(): Promise<boolean> {
   try {
     const cookieStore = await cookies();
     const token = cookieStore.get("admin-auth")?.value;
-
-    if (!token) return false;
-
-    return verifyAuthToken(token);
-  } catch {
+    
+    console.log('Auth check - token exists:', !!token); // Debug log
+    
+    if (!token) {
+      console.log('No auth token found');
+      return false;
+    }
+    
+    const isValid = verifyAuthToken(token);
+    console.log('Token validation result:', isValid); // Debug log
+    
+    return isValid;
+  } catch (error) {
+    console.error('Auth error:', error); // Debug log
     return false;
   }
 }

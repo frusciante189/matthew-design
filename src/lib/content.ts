@@ -195,9 +195,17 @@ export async function getContent(): Promise<ContentData> {
 
 export async function updateContent(content: ContentData): Promise<{ success: boolean; error?: string }> {
   try {
+    // In production (Vercel), we can't write to filesystem
+    // For now, return success but content won't persist
+    if (process.env.VERCEL) {
+      console.log('Running on Vercel - file writes not supported');
+      return { success: false, error: 'Content updates not supported in production. Use a database or external storage.' };
+    }
+    
     writeFileSync(CONTENT_FILE, JSON.stringify(content, null, 2));
     return { success: true };
-  } catch {
-    return { success: false, error: 'Update failed' };
+  } catch (error) {
+    console.error('Content update error:', error);
+    return { success: false, error: 'File write failed: ' + (error instanceof Error ? error.message : 'Unknown error') };
   }
 }
