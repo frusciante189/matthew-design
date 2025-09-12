@@ -2,47 +2,20 @@
 
 import * as Accordion from "@radix-ui/react-accordion";
 import { Plus, Minus } from "lucide-react";
+import { ContentData } from "@/lib/content";
 
-const faqData = [
-  {
-    id: "item-1",
-    question: "What is this?",
-    answer:
-      "Your subscription-based legal assistant for construction SMEs. Powered by AI, backed by real lawyers.",
-    defaultOpen: true,
-  },
-  {
-    id: "item-2",
-    question: "When do you launch?",
-    answer: "Founding members get early access soon.",
-  },
-  {
-    id: "item-3",
-    question: "What do I get as a founding member?",
-    answer:
-      "Discounted pricing, priority access, and influence on the platform's future.",
-  },
-  {
-    id: "item-4",
-    question: "What kind of work can you help with?",
-    answer:
-      "Payment claims, contracts, WHS, insurance, employment law, environmental compliance, and disputes.",
-  },
-  {
-    id: "item-5",
-    question: "How fast do you deliver?",
-    answer: "Most requests are handled within 48 hours.",
-  },
-];
+interface FAQProps {
+  content: ContentData;
+}
 
-export default function FAQ() {
+export default function FAQ({ content }: FAQProps) {
   return (
     <section className="py-20 px-4 relative z-50">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-12">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white">
-            FAQ&apos;s
+{content.faq.title}
           </h2>
           <div className="hidden sm:block">
             {/* FAQ Icon */}
@@ -61,10 +34,10 @@ export default function FAQ() {
           collapsible
           className="space-y-4"
         >
-          {faqData.map((faq) => (
+          {content.faq.items.map((faq, index) => (
             <Accordion.Item
-              key={faq.id}
-              value={faq.id}
+              key={`item-${index + 1}`}
+              value={`item-${index + 1}`}
               className="bg-primary/10 border-2 border-white/20 rounded-2xl overflow-hidden hover:border-white/40 transition-all duration-300"
             >
               <Accordion.Trigger className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors group">

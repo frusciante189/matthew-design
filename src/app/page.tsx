@@ -8,8 +8,10 @@ import FeatureComparison from "@/components/feature-comparison";
 import CountdownSection from "@/components/countdown-section";
 import Footer from "@/components/footer";
 import Image from "next/image";
+import { getContent } from "@/lib/content";
 
-export default function Home() {
+export default async function Home() {
+  const content = await getContent();
   return (
     <div className="min-h-screen w-full relative">
       <Image
@@ -20,7 +22,7 @@ export default function Home() {
         className="w-full h-screen absolute top-0 pointer-events-none -z-10"
         priority
       />
-      <Hero />
+      <Hero content={content} />
       <div className="min-h-screen relative w-full">
         <Image
           src="/g1.avif"
@@ -36,8 +38,8 @@ export default function Home() {
           height={1080}
           className="absolute left-0 pointer-events-none -z-10"
         />
-        <ProcessSection />
-        <PricingSection />
+        <ProcessSection content={content} />
+        <PricingSection content={content} />
         <div className="relative">
           <Image
             src="/g3.avif"
@@ -46,10 +48,10 @@ export default function Home() {
             height={1080}
             className="absolute top-0 left-0 pointer-events-none -z-10"
           />
-          <BentoGrid />
+          <BentoGrid content={content} />
         </div>
-        <Waitlist />
-        <FeatureComparison />
+        <Waitlist content={content} />
+        <FeatureComparison content={content} />
         <div className="relative">
           <Image
             src="/g4.avif"
@@ -58,11 +60,11 @@ export default function Home() {
             height={1080}
             className="absolute top-0 right-0 pointer-events-none -z-10"
           />
-          <FAQ />
+          <FAQ content={content} />
         </div>
       </div>
-      <CountdownSection />
-      <Footer />
+      <CountdownSection content={content} />
+      <Footer content={content} />
     </div>
   );
 }

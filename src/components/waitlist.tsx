@@ -1,6 +1,11 @@
 import { ChevronRight } from "lucide-react";
+import { ContentData } from "@/lib/content";
 
-export default function Waitlist() {
+interface WaitlistProps {
+  content: ContentData;
+}
+
+export default function Waitlist({ content }: WaitlistProps) {
   return (
     <section className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
@@ -49,19 +54,19 @@ export default function Waitlist() {
           <div className="flex justify-center mb-8">
             <div className="px-6 py-3 border-2 border-white/30 rounded-full">
               <span className="text-white/80 text-sm font-medium tracking-wider uppercase">
-                🚧 Launching Soon — Join Our Founding Members
+                {content.waitlist.badge}
               </span>
             </div>
           </div>
 
           {/* Main heading */}
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
-            Join the Waitlist
+            {content.waitlist.title}
           </h2>
 
           {/* Subheading */}
           <p className="text-lg sm:text-xl text-white/80 mb-12 max-w-2xl mx-auto">
-            Secure early access, discounted pricing, and peace of mind for your business.
+            {content.waitlist.subtitle}
           </p>
 
           {/* Email signup form */}
@@ -70,11 +75,11 @@ export default function Waitlist() {
               <input
                 type="email"
                 className="w-full py-3 sm:py-4 px-4 sm:px-6 rounded-full bg-black/30 backdrop-blur-sm placeholder:text-white/60 text-white text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-white/40 transition-all duration-200"
-                placeholder="your.email@domain.com"
+                placeholder={content.waitlist.emailPlaceholder}
               />
               <button className="font-medium cursor-pointer text-white flex items-center gap-1 absolute -right-1 top-0 bg-primary hover:bg-primary/80 h-full px-6 rounded-full transition-all duration-200 text-base">
                 <ChevronRight size={18} />
-                Join Waitlist
+{content.waitlist.ctaText}
               </button>
             </div>
           </div>

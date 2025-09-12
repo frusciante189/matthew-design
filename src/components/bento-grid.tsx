@@ -1,6 +1,11 @@
 import { Infinity, Clock } from "lucide-react";
+import { ContentData } from "@/lib/content";
 
-export default function BentoGrid() {
+interface BentoGridProps {
+  content: ContentData;
+}
+
+export default function BentoGrid({ content }: BentoGridProps) {
   return (
     <section className="py-20 px-4 max-w-7xl mx-auto relative">
       <div className="flex flex-col gap-20">
@@ -9,18 +14,15 @@ export default function BentoGrid() {
           <div className="flex justify-center">
             <div className="px-6 py-3 border-2 border-white/20 rounded-full">
               <span className="text-white/80 text-sm font-medium tracking-wider uppercase">
-                The Difference
+                {content.bentoGrid.badge}
               </span>
             </div>
           </div>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-primary via-secondary to-tertiary bg-clip-text text-transparent leading-tight">
-            We Built This for Construction SMEs —
-            <br />
-            Not Big Corporates.
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-primary via-secondary to-tertiary bg-clip-text text-transparent leading-tight whitespace-pre-line">
+            {content.bentoGrid.title}
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-4xl mx-auto leading-normal">
-            Law firms weren&apos;t built for tradies. We were. Fast, simple,
-            affordable legal support when you need it most.
+            {content.bentoGrid.subtitle}
           </p>
         </div>
 
@@ -29,10 +31,10 @@ export default function BentoGrid() {
           {/* World-class card with design examples - Top left spanning 2 columns */}
           <div className="lg:col-span-2 bg-primary/5 border-2 border-white/20 p-8 rounded-3xl hover:border-white/40 transition-all duration-300 relative overflow-hidden">
             <h3 className="text-2xl font-bold text-white mb-4">
-              World-Class, Every Time
+              {content.bentoGrid.cards[0].title}
             </h3>
             <p className="text-white/70 text-base mb-6 max-w-md">
-              Get expert construction law advice without paying expert rates.
+              {content.bentoGrid.cards[0].description}
             </p>
             <div className="absolute -bottom-4 -right-4 opacity-60">
               <div className="grid grid-cols-2 gap-2 transform rotate-12">
@@ -55,10 +57,10 @@ export default function BentoGrid() {
           {/* Request as many designs - Right column */}
           <div className="bg-primary/5 border-2 border-white/20 p-8 rounded-3xl hover:border-white/40 transition-all duration-300 lg:row-span-2 flex flex-col justify-center">
             <h3 className="text-2xl font-bold text-white mb-4 leading-tight">
-              Unlimited Requests
+              {content.bentoGrid.cards[1].title}
             </h3>
             <p className="text-white/70 text-base mb-8">
-              Contracts, claims, compliance — ask as often as you need.
+              {content.bentoGrid.cards[1].description}
             </p>
             <div className="flex justify-center">
               <div className="relative">
@@ -71,10 +73,10 @@ export default function BentoGrid() {
           {/* Fixed Monthly Fee */}
           <div className="bg-primary/5 border-2 border-white/20 p-6 rounded-3xl hover:border-white/40 transition-all duration-300 text-center">
             <h3 className="text-lg font-bold text-white mb-4">
-              Flat Monthly Fee
+              {content.bentoGrid.cards[2].title}
             </h3>
             <p className="text-white/70 text-sm mb-6">
-              No scary lawyer invoices.
+              {content.bentoGrid.cards[2].description}
             </p>
             <div className="flex justify-center">
               <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
@@ -86,10 +88,10 @@ export default function BentoGrid() {
           {/* Quick Turnarounds */}
           <div className="bg-primary/5 border-2 border-white/20 p-6 rounded-3xl hover:border-white/40 transition-all duration-300 text-center">
             <h3 className="text-lg font-bold text-white mb-4">
-              Quick Turnarounds
+              {content.bentoGrid.cards[3].title}
             </h3>
             <p className="text-white/70 text-sm mb-6">
-              Answers in as little as 48 hours.
+              {content.bentoGrid.cards[3].description}
             </p>
             <div className="flex justify-center">
               <div className="w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center">
@@ -100,9 +102,9 @@ export default function BentoGrid() {
 
           {/* Exclusive Ownership */}
           <div className="bg-primary/5 border-2 border-white/20 p-8 rounded-3xl hover:border-white/40 transition-all duration-300">
-            <h3 className="text-xl font-bold text-white mb-6">Yours to Keep</h3>
+            <h3 className="text-xl font-bold text-white mb-6">{content.bentoGrid.cards[4].title}</h3>
             <p className="text-white/70 text-base">
-              Every doc we prepare is 100% yours.
+              {content.bentoGrid.cards[4].description}
             </p>
           </div>
 
@@ -110,10 +112,10 @@ export default function BentoGrid() {
           <div className="lg:col-span-2 bg-primary/5 border-2 border-white/20 p-8 rounded-3xl hover:border-white/40 transition-all duration-300 flex items-center justify-between">
             <div>
               <h3 className="text-xl font-bold text-white mb-6">
-                Flexible Plans
+                {content.bentoGrid.cards[5].title}
               </h3>
               <p className="text-white/70 text-base max-w-md">
-                Pause or upgrade anytime.
+                {content.bentoGrid.cards[5].description}
               </p>
             </div>
             <div className="hidden md:flex items-end space-x-3">

@@ -1,6 +1,9 @@
-"use client";
-
 import { PricingCards, PricingTier } from "./pricing-cards";
+import { ContentData } from "@/lib/content";
+
+interface PricingSectionProps {
+  content: ContentData;
+}
 
 const pricingTiers: PricingTier[] = [
   {
@@ -70,19 +73,17 @@ const pricingTiers: PricingTier[] = [
   },
 ];
 
-const PricingSection = () => {
+const PricingSection = ({ content }: PricingSectionProps) => {
   return (
     <section className="relative py-20 px-4">
       <div className="max-w-6xl mx-auto flex flex-col gap-16">
         {/* Header */}
         <div className="text-center flex flex-col gap-6">
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white">
-            Simple Pricing
+            {content.pricing.title}
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-normal">
-            Choose the plan that fits your business. No hidden fees, no scary lawyer invoices.
-            <br />
-            <span className="text-white font-semibold">Protect your business today.</span>
+          <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-normal whitespace-pre-line">
+            {content.pricing.subtitle}
           </p>
         </div>
 

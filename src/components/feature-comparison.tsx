@@ -1,4 +1,9 @@
 import { Check, X } from "lucide-react";
+import { ContentData } from "@/lib/content";
+
+interface FeatureComparisonProps {
+  content: ContentData;
+}
 
 const comparisonData = [
   {
@@ -63,7 +68,7 @@ const comparisonData = [
   },
 ];
 
-export default function FeatureComparison() {
+export default function FeatureComparison({ content }: FeatureComparisonProps) {
   return (
     <section className="py-20 px-4 relative">
       <div className="max-w-6xl mx-auto">
@@ -72,15 +77,15 @@ export default function FeatureComparison() {
           <div className="flex justify-center">
             <div className="px-6 py-3 border-2 border-white/20 rounded-full">
               <span className="text-white/80 text-sm font-medium tracking-wider uppercase">
-                Feature Comparison
+                {content.featureComparison.badge}
               </span>
             </div>
           </div>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white">
-            Why Choose Us Over Traditional Law Firms?
+            {content.featureComparison.title}
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-4xl mx-auto leading-normal">
-            See how we stack up against expensive traditional legal services.
+            {content.featureComparison.subtitle}
           </p>
         </div>
 
@@ -187,14 +192,13 @@ export default function FeatureComparison() {
         <div className="text-center mt-12">
           <div className="bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/30 rounded-2xl p-8">
             <h3 className="text-2xl font-bold text-white mb-4">
-              Ready to Switch to Smarter Legal Support?
+              {content.featureComparison.bottomCta.title}
             </h3>
             <p className="text-white/70 mb-6">
-              Join hundreds of construction professionals who&apos;ve made the
-              switch.
+              {content.featureComparison.bottomCta.subtitle}
             </p>
             <button className="bg-primary hover:bg-primary/80 text-white font-semibold px-8 py-3 rounded-full transition-all duration-200 flex items-center gap-2 mx-auto">
-              Get Started Today
+              {content.featureComparison.bottomCta.ctaText}
               <Check className="w-4 h-4" />
             </button>
           </div>
