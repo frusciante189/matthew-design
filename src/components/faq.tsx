@@ -6,40 +6,32 @@ import { Plus, Minus } from "lucide-react";
 const faqData = [
   {
     id: "item-1",
-    question: "What exactly is DesignBell?",
+    question: "What is this?",
     answer:
-      "DesignBell is a founder-led design service that works like a subscription. You send requests, we deliver high-quality designs, fast, consistent, and without the hassle of hiring.",
+      "Your subscription-based legal assistant for construction SMEs. Powered by AI, backed by real lawyers.",
     defaultOpen: true,
   },
   {
     id: "item-2",
     question: "When do you launch?",
-    answer:
-      "We are launching on September 25, 2025. Join our waitlist to secure your founding member spot and get priority access.",
+    answer: "Founding members get early access soon.",
   },
   {
     id: "item-3",
     question: "What do I get as a founding member?",
     answer:
-      "As a founding member, you'll get priority access, exclusive perks, special pricing, and direct input on new features and services.",
+      "Discounted pricing, priority access, and influence on the platform's future.",
   },
   {
     id: "item-4",
-    question: "What kind of design work can you do?",
+    question: "What kind of work can you help with?",
     answer:
-      "We handle all types of design work including branding, logos, web design, mobile apps, social media graphics, presentations, print materials, and much more.",
+      "Payment claims, contracts, WHS, insurance, employment law, environmental compliance, and disputes.",
   },
   {
     id: "item-5",
-    question: "How fast are designs delivered?",
-    answer:
-      "Most designs are delivered within 24-48 hours. Complex projects may take longer, but we'll always communicate timelines upfront.",
-  },
-  {
-    id: "item-6",
-    question: "What if I don't need unlimited design every month?",
-    answer:
-      "No problem! You can pause or cancel your subscription at any time. We offer flexible plans that scale with your needs.",
+    question: "How fast do you deliver?",
+    answer: "Most requests are handled within 48 hours.",
   },
 ];
 

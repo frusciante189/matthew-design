@@ -49,7 +49,7 @@ export default function Waitlist() {
           <div className="flex justify-center mb-8">
             <div className="px-6 py-3 border-2 border-white/30 rounded-full">
               <span className="text-white/80 text-sm font-medium tracking-wider uppercase">
-                Launching September 25
+                🚧 Launching Soon — Join Our Founding Members
               </span>
             </div>
           </div>
@@ -61,7 +61,7 @@ export default function Waitlist() {
 
           {/* Subheading */}
           <p className="text-lg sm:text-xl text-white/80 mb-12 max-w-2xl mx-auto">
-            Secure your founding-member spot for priority access and exclusive perks.
+            Secure early access, discounted pricing, and peace of mind for your business.
           </p>
 
           {/* Email signup form */}

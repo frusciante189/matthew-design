@@ -12,7 +12,8 @@ export interface PricingFeature {
 
 export interface PricingTier {
   name: string;
-  price: number;
+  price?: number | null;
+  priceText?: string;
   interval?: string;
   description: string;
   features: PricingFeature[];
@@ -87,7 +88,7 @@ export function PricingCards({
                       "text-5xl font-light",
                       tier.highlight ? "text-white font-bold" : "text-white"
                     )}>
-                      ${tier.price}
+                      {tier.priceText || `$${tier.price}`}
                     </span>
                     <span className={cn(
                       "text-sm",

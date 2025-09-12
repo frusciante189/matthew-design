@@ -4,6 +4,7 @@ import PricingSection from "@/components/pricing-section";
 import BentoGrid from "@/components/bento-grid";
 import Waitlist from "@/components/waitlist";
 import FAQ from "@/components/faq";
+import FeatureComparison from "@/components/feature-comparison";
 import CountdownSection from "@/components/countdown-section";
 import Footer from "@/components/footer";
 import Image from "next/image";
@@ -34,6 +35,7 @@ export default function Home() {
           <Image src="/g4.avif" alt="" width={1920} height={1080} className="absolute top-0 right-0 pointer-events-none -z-10" />
           <FAQ />
         </div>
+        <FeatureComparison />
       </div>
       <CountdownSection />
       <Footer />

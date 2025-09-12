@@ -39,12 +39,14 @@ const Hero = () => {
  duration-300 ease-in-out group-hover:translate-x-0.5"
             />
           </div>
-          <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-center leading-none">
-            Unlock Your Brand&apos;s Design Potential
+          <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-center leading-none">
+            Construction Law Made Simple. <br /> Get Paid. Stay Safe. Cut Legal
+            Costs.
           </h1>
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-center text-white/80 max-w-3xl">
-            One subscription. Unlimited designs. Secure your founding-member
-            spot for priority access and exclusive perks. Join the waitlist now.
+            The first AI-powered legal assistant built for Aussie builders,
+            subcontractors, and tradies. Affordable, fast, and always on your
+            side.
           </p>
           <Countdown targetDate={new Date("2025-09-25T00:00:00")} />
           <div className="p-3 sm:p-5 w-full mx-auto flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-0">
@@ -56,12 +58,12 @@ const Hero = () => {
               />
               <button className="font-medium cursor-pointer text-white hidden sm:flex items-center gap-1 absolute -right-1 top-0 bg-primary hover:bg-primary/80 h-full px-6 rounded-full transition-all duration-200 text-base">
                 <ChevronRight size={18} />
-                Join Waitlist
+                Join the Waitlist Today
               </button>
             </div>
             <button className="font-medium cursor-pointer text-white flex sm:hidden items-center justify-center gap-2 bg-primary hover:bg-primary/80 px-8 py-3 rounded-full transition-all duration-200 text-base">
               <ChevronRight size={18} />
-              Join Waitlist
+              Join the Waitlist Today
             </button>
           </div>
         </div>

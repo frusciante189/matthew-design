@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import NumberFlow, { NumberFlowGroup } from "@number-flow/react";
 
 type Props = {
@@ -7,9 +7,7 @@ type Props = {
 };
 
 export default function Countdown({ targetDate }: Props) {
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-
-  function calculateTimeLeft() {
+  const calculateTimeLeft = useCallback(() => {
     const now = new Date().getTime();
     const target = targetDate.getTime();
     const difference = target - now;
@@ -26,7 +24,9 @@ export default function Countdown({ targetDate }: Props) {
       minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
       seconds: Math.floor((difference % (1000 * 60)) / 1000),
     };
-  }
+  }, [targetDate]);
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -34,7 +34,7 @@ export default function Countdown({ targetDate }: Props) {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [targetDate, calculateTimeLeft]);
+  }, [calculateTimeLeft]);
 
   const timeUnits = [
     { value: timeLeft.days, label: "Days" },

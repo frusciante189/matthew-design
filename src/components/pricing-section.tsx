@@ -4,20 +4,20 @@ import { PricingCards, PricingTier } from "./pricing-cards";
 
 const pricingTiers: PricingTier[] = [
   {
-    name: "Starter",
-    price: 2995,
+    name: "👷 Starter",
+    price: 295,
     interval: "per month",
-    description: "Perfect for individuals and freelancers getting started with professional design.",
+    description: "For sole traders & subbies",
     features: [
-      { name: "One request at a time", included: true },
-      { name: "Average 72-hour delivery", included: true },
-      { name: "5 brands max", included: true },
-      { name: "2 users max", included: true },
-      { name: "Basic stock photos", included: true },
-      { name: "Easy credit-card payments", included: true },
-      { name: "Pause or cancel anytime", included: true },
+      { name: "1 request at a time", included: true },
+      { name: "Payment claim generator", included: true },
+      { name: "2 contract checks/month", included: true },
+      { name: "WHS starter kit", included: true },
+      { name: "Cancel anytime", included: true },
       { name: "Priority support", included: false },
-      { name: "Custom branding", included: false },
+      { name: "Unlimited contract templates", included: false },
+      { name: "Lawyer-reviewed documents", included: false },
+      { name: "Full WHS toolkit", included: false },
     ],
     cta: {
       text: "Get Started",
@@ -25,21 +25,21 @@ const pricingTiers: PricingTier[] = [
     },
   },
   {
-    name: "Professional",
-    price: 4995,
+    name: "🏗️ Professional",
+    price: 995,
     interval: "per month",
-    description: "Ideal for small businesses and startups looking to establish their brand identity.",
+    description: "For small builders",
     highlight: true,
     features: [
-      { name: "Two requests at a time", included: true },
-      { name: "Average 48-hour delivery", included: true },
-      { name: "Unlimited brands", included: true },
-      { name: "Unlimited users", included: true },
-      { name: "Unlimited stock photos", included: true },
-      { name: "Easy credit-card payments", included: true },
-      { name: "Pause or cancel anytime", included: true },
+      { name: "2 requests at a time", included: true },
+      { name: "Unlimited contract templates", included: true },
+      { name: "5 lawyer-reviewed documents/month", included: true },
+      { name: "Full WHS toolkit", included: true },
       { name: "Priority support", included: true },
-      { name: "Custom branding", included: false },
+      { name: "Payment claim generator", included: true },
+      { name: "Cancel anytime", included: true },
+      { name: "Compliance dashboard", included: false },
+      { name: "Dedicated lawyer support", included: false },
     ],
     cta: {
       text: "Get Started",
@@ -47,20 +47,21 @@ const pricingTiers: PricingTier[] = [
     },
   },
   {
-    name: "Enterprise",
-    price: 7995,
+    name: "🏢 Enterprise",
+    price: null,
+    priceText: "Custom Pricing",
     interval: "per month",
-    description: "For large companies requiring dedicated support and custom branding solutions.",
+    description: "For large firms & developers",
     features: [
-      { name: "Three requests at a time", included: true },
-      { name: "Average 24-hour delivery", included: true },
-      { name: "Unlimited brands", included: true },
-      { name: "Unlimited users", included: true },
-      { name: "Unlimited stock photos", included: true },
-      { name: "Easy credit-card payments", included: true },
-      { name: "Pause or cancel anytime", included: true },
+      { name: "3+ requests at a time", included: true },
+      { name: "Unlimited reviews & claims", included: true },
+      { name: "Compliance dashboard", included: true },
+      { name: "Dedicated lawyer support", included: true },
+      { name: "Full WHS toolkit", included: true },
       { name: "Priority support", included: true },
-      { name: "Custom branding", included: true },
+      { name: "Custom integrations", included: true },
+      { name: "24/7 emergency support", included: true },
+      { name: "White-label options", included: true },
     ],
     cta: {
       text: "Contact Sales",
@@ -79,9 +80,9 @@ const PricingSection = () => {
             Simple Pricing
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-normal">
-            Choose the plan that fits your needs. No hidden fees, no long-term contracts.
+            Choose the plan that fits your business. No hidden fees, no scary lawyer invoices.
             <br />
-            <span className="text-white font-semibold">Start your design journey today.</span>
+            <span className="text-white font-semibold">Protect your business today.</span>
           </p>
         </div>
 

@@ -3,19 +3,16 @@ import { Marquee } from "./ui/marquee";
 import { CreditCard, Zap, Clock } from "lucide-react";
 
 const ProcessSection = () => {
-  const designServices = [
-    "Branding",
-    "Email",
-    "Framer",
-    "Print Design",
-    "Logo Design",
-    "User Interface",
-    "Landing Pages",
-    "Packaging",
-    "Web Design",
-    "Mobile App",
-    "Presentation",
-    "Social Media",
+  const legalServices = [
+    "Payment Claims (SoP)",
+    "Contract Reviews",
+    "WHS Compliance",
+    "Employment Law",
+    "Subcontractor Agreements",
+    "Insurance & Risk",
+    "Environmental Approvals",
+    "Safety Checklists",
+    "Dispute Resolution",
   ];
 
   return (
@@ -24,14 +21,11 @@ const ProcessSection = () => {
         {/* Hassle-free Process */}
         <div className="text-center flex flex-col gap-8">
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white">
-            Hassle-free Process
+            From Problem to Solution in 3 Simple Steps
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-4xl mx-auto leading-normal">
-            Say farewell to conventional design process. Embrace a new design
-            process that&apos;s{" "}
-            <span className="text-white font-semibold">
-              tailored just for your kind of needs.
-            </span>
+            Forget $500/hour lawyer bills. Here&apos;s how we protect your
+            business:
           </p>
         </div>
 
@@ -49,9 +43,9 @@ const ProcessSection = () => {
                     Subscribe
                   </h3>
                   <p className="text-white/70 text-sm mt-2">
-                    Subscribe to any plan,
+                    Flat monthly fee.
                     <br />
-                    request unlimited designs.
+                    No hidden extras.
                   </p>
                 </div>
               </div>
@@ -70,9 +64,9 @@ const ProcessSection = () => {
                     Request
                   </h3>
                   <p className="text-white/70 text-sm mt-2">
-                    Request anything you like,
+                    Ask for contracts, payment claims,
                     <br />
-                    from branding to web design.
+                    WHS help, or anything legal.
                   </p>
                 </div>
               </div>
@@ -91,9 +85,9 @@ const ProcessSection = () => {
                     Receive
                   </h3>
                   <p className="text-white/70 text-sm mt-2">
-                    Average turnaround as little
+                    Get what you need
                     <br />
-                    as two business days.
+                    in 24–48 hours.
                   </p>
                 </div>
               </div>
@@ -107,12 +101,13 @@ const ProcessSection = () => {
             {/* Left side - Text content */}
             <div className="flex-shrink-0 lg:w-1/3 flex flex-col gap-4">
               <h2 className="text-xl sm:text-2xl font-bold text-white leading-tight">
-                All Your Design Needs.
+                All the Legal Protection You&apos;ll Ever Need.
                 <br />
-                One Simple Subscription.
+                One Subscription.
               </h2>
               <p className="text-sm sm:text-base text-white/70">
-                Power of a full team. Costs less than a single hire.
+                It&apos;s like having a construction lawyer in your pocket — for less
+                than one site fine.
               </p>
             </div>
 
@@ -129,7 +124,7 @@ const ProcessSection = () => {
                   }}
                 >
                   <Marquee className="[--duration:25s]">
-                    {designServices.slice(0, 6).map((service, index) => (
+                    {legalServices.slice(0, 5).map((service, index) => (
                       <div
                         key={index}
                         className="mx-2 px-4 py-2 font-bold border border-white/20 rounded-full whitespace-nowrap bg-primary/20"
@@ -152,7 +147,7 @@ const ProcessSection = () => {
                   }}
                 >
                   <Marquee reverse className="[--duration:25s]">
-                    {designServices.slice(6).map((service, index) => (
+                    {legalServices.slice(5).map((service, index) => (
                       <div
                         key={index}
                         className="mx-2 px-4 py-2 font-bold border border-white/20 rounded-full whitespace-nowrap bg-primary/20"
