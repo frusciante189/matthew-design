@@ -1,5 +1,6 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
+import { Octokit } from 'octokit';
 
 const CONTENT_FILE = join(process.cwd(), 'src/data/content.json');
 
@@ -98,10 +99,15 @@ export interface ContentData {
 
 export async function getContent(): Promise<ContentData> {
   try {
+    // Always use local file for now (Static Generation approach)
+    // In production, this will be built into the bundle
     const content = JSON.parse(readFileSync(CONTENT_FILE, 'utf-8'));
+    console.log('Content loaded from static file');
     return content;
-  } catch {
+  } catch (error) {
+    console.error('Failed to load content from file:', error);
     // Default fallback content
+    console.log('Using default fallback content');
     const defaultContent: ContentData = {
       branding: { companyName: "DesignBell", logo: "/logo.png" },
       hero: {
@@ -193,19 +199,71 @@ export async function getContent(): Promise<ContentData> {
   }
 }
 
-export async function updateContent(content: ContentData): Promise<{ success: boolean; error?: string }> {
+// GitHub CMS configuration
+const GITHUB_CONFIG = {
+  owner: process.env.GITHUB_REPO_OWNER || 'your-username',
+  repo: process.env.GITHUB_REPO_NAME || 'designbell-clone', 
+  path: 'src/data/content.json',
+  branch: 'main'
+};
+
+export async function updateContent(content: ContentData): Promise<{ success: boolean; error?: string; message?: string }> {
   try {
-    // In production (Vercel), we can't write to filesystem
-    // For now, return success but content won't persist
-    if (process.env.VERCEL) {
-      console.log('Running on Vercel - file writes not supported');
-      return { success: false, error: 'Content updates not supported in production. Use a database or external storage.' };
+    // Always use GitHub API for content updates
+    if (!process.env.GITHUB_TOKEN) {
+      return { 
+        success: false, 
+        error: 'GitHub token not configured. Set GITHUB_TOKEN environment variable.' 
+      };
     }
+
+    const octokit = new Octokit({
+      auth: process.env.GITHUB_TOKEN,
+    });
+
+    // Get current file to get SHA (required for updates)
+    const { data: currentFile } = await octokit.rest.repos.getContent({
+      owner: GITHUB_CONFIG.owner,
+      repo: GITHUB_CONFIG.repo,
+      path: GITHUB_CONFIG.path,
+    });
+
+    // Update file content
+    const contentString = JSON.stringify(content, null, 2);
+    const contentBase64 = Buffer.from(contentString).toString('base64');
+
+    await octokit.rest.repos.createOrUpdateFileContents({
+      owner: GITHUB_CONFIG.owner,
+      repo: GITHUB_CONFIG.repo,
+      path: GITHUB_CONFIG.path,
+      message: `Update CMS content via admin panel - ${new Date().toISOString()}`,
+      content: contentBase64,
+      sha: Array.isArray(currentFile) ? undefined : currentFile.sha,
+      branch: GITHUB_CONFIG.branch,
+    });
+
+    console.log('Content updated in GitHub repository');
     
-    writeFileSync(CONTENT_FILE, JSON.stringify(content, null, 2));
-    return { success: true };
+    // Trigger Vercel deployment (optional webhook)
+    if (process.env.VERCEL_DEPLOY_HOOK) {
+      try {
+        await fetch(process.env.VERCEL_DEPLOY_HOOK, { method: 'POST' });
+        console.log('Vercel deployment triggered');
+      } catch {
+        console.log('Failed to trigger deployment, but content was updated');
+      }
+    }
+
+    return { 
+      success: true, 
+      message: 'Content updated in GitHub. Site will redeploy automatically.' 
+    };
+
   } catch (error) {
-    console.error('Content update error:', error);
-    return { success: false, error: 'File write failed: ' + (error instanceof Error ? error.message : 'Unknown error') };
+    console.error('GitHub content update error:', error);
+    return { 
+      success: false, 
+      error: 'GitHub update failed: ' + (error instanceof Error ? error.message : 'Unknown error')
+    };
   }
 }
