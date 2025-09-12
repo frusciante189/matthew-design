@@ -11,6 +11,7 @@ interface AdminFormProps {
 export default function AdminForm({ initialContent, updateAction }: AdminFormProps) {
   const [content, setContent] = useState<ContentData>(initialContent);
   const [message, setMessage] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
   const [isPending, setIsPending] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -22,6 +23,7 @@ export default function AdminForm({ initialContent, updateAction }: AdminFormPro
     
     const result = await updateAction(formData);
     setMessage(result.message);
+    setIsSuccess(result.success);
     setIsPending(false);
   };
 
@@ -79,7 +81,7 @@ export default function AdminForm({ initialContent, updateAction }: AdminFormPro
           </div>
 
           {message && (
-            <div className={`p-4 rounded mb-6 ${message.includes('success') ? 'bg-green-800' : 'bg-red-800'}`}>
+            <div className={`p-4 rounded mb-6 ${isSuccess ? 'bg-green-800 text-green-200' : 'bg-red-800 text-red-200'}`}>
               {message}
             </div>
           )}
