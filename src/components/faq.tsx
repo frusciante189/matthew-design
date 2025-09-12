@@ -42,7 +42,7 @@ export default function FAQ() {
         {/* Header */}
         <div className="flex items-center justify-between mb-12">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white">
-            FAQ's
+            FAQ&apos;s
           </h2>
           <div className="hidden sm:block">
             {/* FAQ Icon */}
