@@ -85,6 +85,10 @@
           {
             "name": "Lawyer-reviewed documents",
             "included": false
+          },
+          {
+            "name": "Full WHS toolkit",
+            "included": false
           }
         ],
         "cta": {
