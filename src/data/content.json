@@ -68,11 +68,11 @@
           },
           {
             "name": "WHS starter kit",
-            "included": true
+            "included": false
           },
           {
             "name": "Cancel anytime",
-            "included": true
+            "included": false
           },
           {
             "name": "Priority support",
