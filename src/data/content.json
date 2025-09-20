@@ -94,7 +94,8 @@
         "cta": {
           "text": "Get Started",
           "href": "#"
-        }
+        },
+        "priceText": "blabla"
       },
       {
         "name": "🏗️ Professional",
