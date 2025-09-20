@@ -35,12 +35,19 @@ export interface ContentData {
     subtitle: string;
     tiers: Array<{
       name: string;
-      price?: number;
+      price?: number | null;
       priceText?: string;
       interval: string;
       description: string;
-      ctaText: string;
+      features: Array<{
+        name: string;
+        included: boolean;
+      }>;
       highlight?: boolean;
+      cta: {
+        text: string;
+        href?: string;
+      };
     }>;
   };
   bentoGrid: {
@@ -136,7 +143,71 @@ export async function getContent(): Promise<ContentData> {
         title: "Simple Pricing",
         subtitle: "Choose the plan that fits your business. No hidden fees, no scary lawyer invoices.\nProtect your business today.",
         tiers: [
-          { name: "👷 Starter", price: 295, interval: "per month", description: "For sole traders & subbies", ctaText: "Get Started" }
+          {
+            name: "👷 Starter",
+            price: 295,
+            interval: "per month",
+            description: "For sole traders & subbies",
+            features: [
+              { name: "1 request at a time", included: true },
+              { name: "Payment claim generator", included: true },
+              { name: "2 contract checks/month", included: true },
+              { name: "WHS starter kit", included: true },
+              { name: "Cancel anytime", included: true },
+              { name: "Priority support", included: false },
+              { name: "Unlimited contract templates", included: false },
+              { name: "Lawyer-reviewed documents", included: false },
+              { name: "Full WHS toolkit", included: false },
+            ],
+            cta: {
+              text: "Get Started",
+              href: "#",
+            },
+          },
+          {
+            name: "🏗️ Professional",
+            price: 995,
+            interval: "per month",
+            description: "For small builders",
+            highlight: true,
+            features: [
+              { name: "2 requests at a time", included: true },
+              { name: "Unlimited contract templates", included: true },
+              { name: "5 lawyer-reviewed documents/month", included: true },
+              { name: "Full WHS toolkit", included: true },
+              { name: "Priority support", included: true },
+              { name: "Payment claim generator", included: true },
+              { name: "Cancel anytime", included: true },
+              { name: "Compliance dashboard", included: false },
+              { name: "Dedicated lawyer support", included: false },
+            ],
+            cta: {
+              text: "Get Started",
+              href: "#",
+            },
+          },
+          {
+            name: "🏢 Enterprise",
+            price: null,
+            priceText: "Custom Pricing",
+            interval: "per month",
+            description: "For large firms & developers",
+            features: [
+              { name: "3+ requests at a time", included: true },
+              { name: "Unlimited reviews & claims", included: true },
+              { name: "Compliance dashboard", included: true },
+              { name: "Dedicated lawyer support", included: true },
+              { name: "Full WHS toolkit", included: true },
+              { name: "Priority support", included: true },
+              { name: "Custom integrations", included: true },
+              { name: "24/7 emergency support", included: true },
+              { name: "White-label options", included: true },
+            ],
+            cta: {
+              text: "Contact Sales",
+              href: "#",
+            },
+          },
         ]
       },
       bentoGrid: {
